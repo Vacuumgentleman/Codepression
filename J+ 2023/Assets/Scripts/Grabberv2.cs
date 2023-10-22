@@ -11,6 +11,7 @@ public class Grabberv2 : MonoBehaviour
     [SerializeField] private AudioClip pickupClip; // Sonido de recogida.
     [SerializeField] private AudioClip dropClip; // Sonido de soltar.
     [SerializeField] private AudioClip incorrectPlacementClip; // Sonido de pieza colocada incorrectamente.
+    [SerializeField] private AudioClip rotationClip; // Sonido de rotación.
     [SerializeField] private float dropDistanceThreshold = 0.5f; // Define la distancia máxima permitida para soltar.
 
     private void Update()
@@ -31,6 +32,9 @@ public class Grabberv2 : MonoBehaviour
                     selectedObject.transform.rotation.eulerAngles.x,
                     selectedObject.transform.rotation.eulerAngles.y + 45f,
                     selectedObject.transform.rotation.eulerAngles.z));
+
+                // Reproduce el sonido de rotación.
+                audioSource.PlayOneShot(rotationClip);
             }
         }
 
