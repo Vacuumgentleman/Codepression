@@ -97,9 +97,18 @@ public class Grabberv2 : MonoBehaviour
                                         collider.enabled = false;
                                     }
 
+                                    // Desactiva el Renderer del objeto del slot para ocultarlo.
+                                    Renderer slotRenderer = slot.GetComponent<Renderer>();
+                                    if (slotRenderer != null){
+                                        slotRenderer.enabled = false;
+                                    }
+
                                     isDragging = false;
                                     selectedObject = null;
                                     Cursor.visible = true;
+
+                                    // Verificar si todos los colliders están desactivados.
+                                    CheckColliders();
 
                                     // Reproduce el sonido de soltar.
                                     audioSource.PlayOneShot(dropClip);
@@ -153,5 +162,35 @@ public class Grabberv2 : MonoBehaviour
         float rotationDifference = Quaternion.Angle(dragRotation, slotRotation);
         // Comprueba si la diferencia de rotación es menor o igual que el ángulo máximo permitido.
         return rotationDifference <= maxRotationDifference;
+    }
+
+    private void CheckColliders()
+    {
+        // Obtener todos los objetos en la escena con el tag "drag."
+        GameObject[] dragObjects = GameObject.FindGameObjectsWithTag("drag");
+
+        // Variable para rastrear si todos los colliders están desactivados.
+        bool allCollidersDisabled = true;
+
+        // Iterar a través de los objetos "drag" y verificar si sus colliders están desactivados.
+        foreach (GameObject dragObject in dragObjects)
+        {
+            Collider[] colliders = dragObject.GetComponentsInChildren<Collider>();
+            foreach (Collider collider in colliders)
+            {
+                if (collider.enabled)
+                {
+                    // Al menos un collider está habilitado, así que no todos los colliders están desactivados.
+                    allCollidersDisabled = false;
+                    break;
+                }
+            }
+        }
+
+        // Si todos los colliders están desactivados, imprime un mensaje en la consola.
+        if (allCollidersDisabled)
+        {
+            Debug.Log("Todos los colliders están desactivados.");
+        }
     }
 }
