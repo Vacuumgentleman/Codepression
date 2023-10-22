@@ -10,6 +10,7 @@ public class Grabberv2 : MonoBehaviour
     [SerializeField] private AudioSource audioSource; // Referencia al componente AudioSource para reproducir sonidos.
     [SerializeField] private AudioClip pickupClip; // Sonido de recogida.
     [SerializeField] private AudioClip dropClip; // Sonido de soltar.
+    [SerializeField] private AudioClip incorrectPlacementClip; // Sonido de pieza colocada incorrectamente.
     [SerializeField] private float dropDistanceThreshold = 0.5f; // Define la distancia máxima permitida para soltar.
 
     private void Update()
@@ -98,6 +99,9 @@ public class Grabberv2 : MonoBehaviour
                             }
                             else
                             {
+                                // Reproduce el sonido de pieza colocada incorrectamente.
+                                audioSource.PlayOneShot(incorrectPlacementClip);
+
                                 selectedObject.transform.position = originalPosition;
                                 selectedObject.transform.rotation = originalRotation;
                                 selectedObject = null;
