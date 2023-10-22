@@ -7,6 +7,11 @@ public class Grabberv2 : MonoBehaviour {
     private Quaternion originalRotation;
     private bool isDragging;
 
+    [SerializeField] private AudioSource audioSource; // Agrega un AudioSource desde el Inspector
+
+    [SerializeField] private AudioClip pickupClip; // Agrega un AudioClip para el sonido de recogida desde el Inspector
+    [SerializeField] private AudioClip dropClip; // Agrega un AudioClip para el sonido de soltar desde el Inspector
+
     private void Update() {
         if (isDragging) {
             Vector3 mousePosition = Input.mousePosition;
@@ -36,6 +41,9 @@ public class Grabberv2 : MonoBehaviour {
                     originalRotation = selectedObject.transform.rotation;
 
                     isDragging = true;
+                    
+                    // Reproduce el sonido de recogida
+                    audioSource.PlayOneShot(pickupClip);
                 }
             }
             else {
@@ -44,6 +52,9 @@ public class Grabberv2 : MonoBehaviour {
                 selectedObject = null;
                 Cursor.visible = true;
                 isDragging = false;
+
+                // Reproduce el sonido de soltar
+                audioSource.PlayOneShot(dropClip);
             }
         }
     }
