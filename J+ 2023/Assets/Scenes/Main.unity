@@ -503,7 +503,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389774881}
-  - component: {fileID: 1389774880}
   - component: {fileID: 1389774882}
   m_Layer: 0
   m_Name: Puzzle Manager
@@ -512,22 +511,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1389774880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389774879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12673cebb07da7f41bc7fa61e2f2d9bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slotPrefabs: []
-  _piecePrefab: {fileID: 0}
-  _slotParent: {fileID: 514688522343917154}
-  _pieceParent: {fileID: 1743750223}
 --- !u!4 &1389774881
 Transform:
   m_ObjectHideFlags: 0
@@ -922,7 +905,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 514688522343917154}
-  - component: {fileID: 896034732129123546}
   - component: {fileID: 896034732129123545}
   m_Layer: 0
   m_Name: Silueta
@@ -1027,20 +1009,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &896034732129123546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 896034732129123544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a36edb392316d8448b51562c313f9237, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 896034732129123545}
-  _completeClip: {fileID: 8300000, guid: 4d4616b04c937d3409e27cb144668393, type: 3}
 --- !u!33 &1017197563342265886
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1137,7 +1105,6 @@ GameObject:
   - component: {fileID: 1017197563342265886}
   - component: {fileID: 4739986622416689209}
   - component: {fileID: 8953212280801922532}
-  - component: {fileID: 8953212280801922531}
   - component: {fileID: 8953212280801922533}
   m_Layer: 0
   m_Name: Surface4
@@ -1692,20 +1659,6 @@ Transform:
   m_Father: {fileID: 514688522343917154}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &8953212280801922531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3559059629463836732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a36edb392316d8448b51562c313f9237, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _source: {fileID: 0}
-  _completeClip: {fileID: 0}
 --- !u!64 &8953212280801922532
 MeshCollider:
   m_ObjectHideFlags: 0
