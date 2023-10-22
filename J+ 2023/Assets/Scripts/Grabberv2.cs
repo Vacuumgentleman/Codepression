@@ -49,7 +49,7 @@ public class Grabberv2 : MonoBehaviour
                     selectedObject = hit.collider.gameObject;
 
                     // Solo permite arrastrar fichas "drag," no "slot."
-                    if (!selectedObject.name.StartsWith("polySurface"))
+                    if (!selectedObject.CompareTag("drag"))
                     {
                         selectedObject = null;
                         return;
@@ -68,7 +68,7 @@ public class Grabberv2 : MonoBehaviour
             else
             {
                 // Comprueba si el objeto "drag" se corresponde con un "slot" por nombre.
-                if (selectedObject.name.StartsWith("polySurface"))
+                if (selectedObject.CompareTag("drag"))
                 {
                     string[] splitName = selectedObject.name.Split('e');
                     int dragNumber = int.Parse(splitName[1]);
@@ -78,28 +78,32 @@ public class Grabberv2 : MonoBehaviour
                     if (slot != null)
                     {
                         // Verifica si la rotación es adecuada antes de soltar la ficha.
-                        if (IsRotationValid(selectedObject, slot))
-                        {
+                        //if (IsRotationValid(selectedObject, slot))
+                        //{
                             // Verifica si la ficha está lo suficientemente cerca del "slot" antes de soltarla.
                             float distanceToSlot = Vector3.Distance(selectedObject.transform.position, slot.position);
                             if (distanceToSlot <= dropDistanceThreshold)
                             {
-                                // Ajusta la posición del objeto al "slot" antes de bloquearlo.
-                                selectedObject.transform.position = slot.position;
-
-                                // Desactiva los Colliders del objeto para que no pueda interactuarse más.
-                                Collider[] colliders = selectedObject.GetComponentsInChildren<Collider>();
-                                foreach (Collider collider in colliders)
+                                // Verifica si la rotación es adecuada antes de soltar la ficha.
+                                if (IsRotationValid(selectedObject, slot))
                                 {
-                                    collider.enabled = false;
+                                    // Ajusta la posición del objeto al "slot" antes de bloquearlo.
+                                    selectedObject.transform.position = slot.position;
+
+                                    // Desactiva los Colliders del objeto para que no pueda interactuarse más.
+                                    Collider[] colliders = selectedObject.GetComponentsInChildren<Collider>();
+                                    foreach (Collider collider in colliders)
+                                    {
+                                        collider.enabled = false;
+                                    }
+
+                                    isDragging = false;
+                                    selectedObject = null;
+                                    Cursor.visible = true;
+
+                                    // Reproduce el sonido de soltar.
+                                    audioSource.PlayOneShot(dropClip);
                                 }
-
-                                isDragging = false;
-                                selectedObject = null;
-                                Cursor.visible = true;
-
-                                // Reproduce el sonido de soltar.
-                                audioSource.PlayOneShot(dropClip);
                             }
                             else
                             {
@@ -112,7 +116,7 @@ public class Grabberv2 : MonoBehaviour
                                 Cursor.visible = true;
                                 isDragging = false;
                             }
-                        }
+                        //}
                     }
                 }
             }
