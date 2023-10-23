@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Grabberv2 : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class Grabberv2 : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = Camera.main.WorldToScreenPoint(selectedObject.transform.position).z;
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            selectedObject.transform.position = new Vector3(worldPosition.x, 0f, worldPosition.z);
+            selectedObject.transform.position = new Vector3(worldPosition.x, 0.3f, worldPosition.z);
 
             if (Input.GetMouseButtonDown(1))
             {
@@ -187,10 +188,39 @@ public class Grabberv2 : MonoBehaviour
             }
         }
 
-        // Si todos los colliders están desactivados, imprime un mensaje en la consola.
+        // Si todos los colliders están desactivados, realiza la animación.
         if (allCollidersDisabled)
         {
             Debug.Log("Todos los colliders están desactivados.");
+
+            // Encuentra el objeto vacío en el centro.
+            GameObject centroDeMasa = GameObject.Find("CentroDeMasa");
+
+            // Mueve las piezas al centro.
+            foreach (GameObject dragObject in dragObjects)
+            {
+                StartCoroutine(MovePiecesToCenter(dragObject.transform.parent, centroDeMasa.transform.position));
+            }
         }
     }
+
+private IEnumerator MovePiecesToCenter(Transform parentTransform, Vector3 centerPosition)
+{
+    float duration = 2.0f; // Duración de la animación de movimiento.
+    float elapsedTime = 0.0f;
+
+    Vector3 initialPosition = parentTransform.position;
+    Vector3 targetPosition = centerPosition;
+    targetPosition.x = -5.0f; // Mueve el objeto padre a x = -5.
+
+    while (elapsedTime < duration)
+    {
+        parentTransform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / duration);
+        elapsedTime += Time.deltaTime;
+        yield return null;
+    }
+
+    parentTransform.position = targetPosition;
+}
+
 }

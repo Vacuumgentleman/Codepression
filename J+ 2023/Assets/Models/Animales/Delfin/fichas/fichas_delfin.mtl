@@ -1,0 +1,48 @@
+newmtl delfin_caja:lambert2SG
+illum 4
+Kd 0.17 0.07 0.07
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert3SG
+illum 4
+Kd 0.72 0.30 0.47
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert4SG
+illum 4
+Kd 0.82 0.56 0.69
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert5SG
+illum 4
+Kd 0.87 0.73 0.80
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert6SG
+illum 4
+Kd 0.50 0.28 0.38
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert7SG
+illum 4
+Kd 0.40 0.13 0.23
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert8SG
+illum 4
+Kd 0.79 0.48 0.62
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl delfin_caja:lambert9SG
+illum 4
+Kd 0.51 0.16 0.30
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
